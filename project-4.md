@@ -36,4 +36,24 @@ In this project, I implemented a simple Book Register web form on AWS using MEAN
   ![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2b6d8b9e-7132-4890-b3ed-e78c1a4ec91d)
   
 ### Step 3 - Install Express and set up routes to the server:
-* I installed the Mongoose package which provides a straight-forward, schema-based solution to model the application data:
+* I installed the Mongoose package which provides a straight-forward, schema-based solution to model the application data: sudo npm install express mongoose
+* Then I created an apps directory did a cd into it and created a routes.js file inputing the following:
+  
+![Screenshot from 2023-07-11 21-54-03](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ef00cff0-51f2-4e74-a121-290416f841f2)
+
+*Then, I created a models directory and did a cd into it:mkdir models && cd models
+*Then, I created a books.js file and inputed the following:
+
+![Screenshot from 2023-07-11 21-56-53](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2712b397-160b-478b-a790-5d0186cbc94d)
+
+### Step 4 – Access the routes with AngularJS:
+* Under the Books directory, i created a public directory and did a cd into it: mkdir public && cd public
+* Then, I created a script.js file and inputed the following:
+
+![Screenshot from 2023-07-11 22-02-29](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/fe09211f-f1b5-4292-ae2e-cf812388edf2)
+
+*Then, I created a index.html file and inputed the following:
+
+![Screenshot from 2023-07-11 22-06-49](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/012734f3-5b56-450d-ae4f-2ce4acd33963)
+
+
