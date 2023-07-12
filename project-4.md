@@ -9,7 +9,7 @@ In this project, I implemented a simple Book Register web form on AWS using MEAN
 
 ### Step 0 – Preparing prerequisites
 * I set up an EC2 instance using Ubuntu 20.04 AMI and t2.micro as instance type and connected to the Ubuntu server via ssh.
-  ![Screenshot from 2023-07-11 20-39-36](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/9a0dbee6-a3b8-44bf-9f1d-f9ed751d77c5)
+![Screenshot from 2023-07-11 20-39-36](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/9a0dbee6-a3b8-44bf-9f1d-f9ed751d77c5)
 
 ### STEP 1 – BACKEND CONFIGURATION:
 * I updated a list of packages in package manager uisng: sudo apt update.
@@ -33,7 +33,7 @@ In this project, I implemented a simple Book Register web form on AWS using MEAN
 * Then, I created a directory 'Books' and did a cd into it: mkdir Books && cd Books
 * Then In the Books directory, I initialized npm project: npm init
 * Then, I created and edited a server.js file inputing the following:
-  ![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2b6d8b9e-7132-4890-b3ed-e78c1a4ec91d)
+![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2b6d8b9e-7132-4890-b3ed-e78c1a4ec91d)
   
 ### Step 3 - Install Express and set up routes to the server:
 * I installed the Mongoose package which provides a straight-forward, schema-based solution to model the application data: sudo npm install express mongoose
@@ -57,7 +57,7 @@ In this project, I implemented a simple Book Register web form on AWS using MEAN
 ![Screenshot from 2023-07-11 22-06-49](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/012734f3-5b56-450d-ae4f-2ce4acd33963)
 
 * Then, I edited my EC2 security group to open port 3300 to the internet, so that i can access the App from a browser.
-* Then, in confirmation that the Node App was successfully deployed on port 3300 of the EC2 instance, I accessed the public Ip and port number of the instance:
+* Then, in confirmation that the Node App was successfully deployed on port 3300 of the EC2 instance, I accessed the public Ip and port number of the instance through a browser:
 ![Screenshot from 2023-07-12 12-21-02](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/914622f5-aa5f-40ac-98e4-2150ae38d68c)
 
 
