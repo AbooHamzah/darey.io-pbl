@@ -52,8 +52,13 @@ In this project, I implemented a simple Book Register web form on AWS using MEAN
 
 ![Screenshot from 2023-07-11 22-02-29](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/fe09211f-f1b5-4292-ae2e-cf812388edf2)
 
-*Then, I created a index.html file and inputed the following:
+* Then, I created a index.html file and inputed the following:
 
 ![Screenshot from 2023-07-11 22-06-49](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/012734f3-5b56-450d-ae4f-2ce4acd33963)
 
-.
+* Then, I edited my EC2 security group to open port 3300 to the internet, so that i can access the App from a browser.
+* Then, in confirmation that the Node App was successfully deployed on port 3300 of the EC2 instance, I accessed the public Ip and port number of the instance:
+![Screenshot from 2023-07-12 12-21-02](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/914622f5-aa5f-40ac-98e4-2150ae38d68c)
+
+
+
