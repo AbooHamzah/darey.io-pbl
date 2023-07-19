@@ -32,5 +32,6 @@
 ![Screenshot from 2023-07-19 15-42-00](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ac344837-0e8a-4c4e-bace-d86bf3590b1b)
 
 ### STEP 2 - LINKING REMOTE REPOSITORY ON GITHUB WITH LOCAL REPOSITORY
+- I logged into my github account and created a new repository
 - 
 
