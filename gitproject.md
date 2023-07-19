@@ -17,4 +17,20 @@
 ![Screenshot from 2023-07-19 15-11-09](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2f87c986-43bb-4587-9af8-002d9f2bef2d)
 
 ### STEP 1 - WORKING WITH BRANCHES
-- I created a new branch(prod) and switched to it by running the git command: 
+- I created a new branch(prod) and switched to it by running the git command:
+  git switch -c prod
+- Then, I switched back into the master branch using: git switch master.
+- Then, I edited the index.txt file adding another line of comment.
+- Then, i added to staging and commited the new change with commands:
+  git add .
+  git commit -m "added a new line to my story"
+- Then, I switched to the prod branch with the aim of merging changes in master to prod:
+  git switch prod
+- Then, I merged master branch to prod branch:
+  git merge master
+
+![Screenshot from 2023-07-19 15-42-00](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ac344837-0e8a-4c4e-bace-d86bf3590b1b)
+
+### STEP 2 - LINKING REMOTE REPOSITORY ON GITHUB WITH LOCAL REPOSITORY
+- 
+
