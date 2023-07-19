@@ -33,5 +33,21 @@
 
 ### STEP 2 - LINKING REMOTE REPOSITORY ON GITHUB WITH LOCAL REPOSITORY
 - I logged into my github account and created a new repository
-- 
+- Then I linked my local with the remote repository by running the commands:
+  git remote add origin https://github.com/AbooHamzah/gitproject.git
+  git push -u origin master
+  
+![Screenshot from 2023-07-19 18-39-48](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/84ea2176-d1c1-4718-8028-b9beab40b04d)
+
+![Screenshot from 2023-07-19 18-40-06](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/22010f3c-9741-4b20-800b-5ea3102e3c43)
+
+### STEP 3 - COLLABORATION ON GITHUB
+- A friend of mine intends to work on my project with me. I have made available to him my repo url and all he needs to do is to use the following command to get a copy of the repository, so he can contribute:
+  git clone https://github.com/AbooHamzah/gitproject.git
+
+
+
+
+  
+  
 
