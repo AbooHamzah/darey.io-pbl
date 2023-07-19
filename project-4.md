@@ -17,7 +17,7 @@ In this project, I implemented a simple Book Register web form on AWS using MEAN
 * Then, i installed certificates using the following:
  sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
  curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-* Then, I installed NodeJs and npm using the command:sudo apt-get install nodejs and sudo apt install npm
+* Then, I installed NodeJs and npm using the command:sudo apt-get install nodejs and sudo apt install npm.
 
 ### Step 2 - Install MongoDB:
 * I ran the following commands to install needed dependencies for MongoDB:
