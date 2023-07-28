@@ -177,3 +177,24 @@
 * Then, I restarted Apache using commands:
 
     sudo systemctl restart httpd
+* Then, I downloaded wordpress and copied it to the var/www/html folder using the following commands:
+     mkdir wordpress
+  cd   wordpress
+  sudo wget http://wordpress.org/latest.tar.gz
+  sudo tar xzvf latest.tar.gz
+  sudo rm -rf latest.tar.gz
+  sudo cp wordpress/wp-config-sample.php wordpress/wp-config.php
+  sudo cp -R wordpress /var/www/html/
+
+ ![Screenshot from 2023-07-28 19-44-30](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/59740551-83fb-4e55-87dc-ca5ee2cde37e)
+
+* Then, I configured SELinux policies by runnibg the following commands:
+
+  sudo chown -R apache:apache /var/www/html/wordpress
+  sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
+  sudo setsebool -P httpd_can_network_connect=1
+
+### STEP 4 - INSTALLATION OF MYSQL ON DB SERVER
+
+
+  
