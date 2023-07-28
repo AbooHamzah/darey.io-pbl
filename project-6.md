@@ -150,7 +150,7 @@
   
     sudo yum -y update
    
-* Then, I installed all needed PHP
+* Then, I installed wget, Apache and it's dependencies:
 
     sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
 
@@ -162,4 +162,18 @@
 
 ![Screenshot from 2023-07-28 16-27-09](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/f47e836f-1278-4c8d-8223-e441dc7c03c4)
 
+* Then, I installed php and it's dependencies using the following commands:
 
+    sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+  sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  sudo yum module list php
+  sudo yum module reset php
+  sudo yum module enable php:remi-7.4
+  sudo yum install php php-opcache php-gd php-curl php-mysqlnd
+  sudo systemctl start php-fpm
+  sudo systemctl enable php-fpm
+  setsebool -P httpd_execmem 1
+
+* Then, I restarted Apache using commands:
+
+    sudo systemctl restart httpd
