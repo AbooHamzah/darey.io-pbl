@@ -144,4 +144,22 @@
 
   ![Screenshot from 2023-07-28 15-59-25](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/1e06cab8-705b-494b-ae66-645f5c91d4de)
 
+### STEP 3 - INSTALLING WORDPRESS ON WEBSERVER
+
+* I updated RHEL packages using the command:
+  
+    sudo yum -y update
+   
+* Then, I installed all needed PHP
+
+    sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
+
+* Then, I started Apache:
+
+  sudo systemctl enable httpd
+  sudo systemctl start httpd
+  sudo systemctl status httpd
+
+![Screenshot from 2023-07-28 16-27-09](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/f47e836f-1278-4c8d-8223-e441dc7c03c4)
+
 
