@@ -5,8 +5,10 @@
   
 ![Screenshot from 2023-07-26 17-37-59](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/9e490ac5-b562-41e5-8fea-d8ccc8602b1d)
 
+  
+### STEP 1 - CONFIGURATING EBS OF WEBSERVER TO BECOME MOUNTABLE LOGICAL FILESYSTEMS:
 
-* Then, I connected to WEB SERVER and confirmed if the volumes were attached by running the command:
+* I connected to WEB SERVER and confirmed if the volumes were attached by running the command:
 
   lsblk
 
@@ -136,7 +138,10 @@
 
 ![Screenshot from 2023-07-28 14-52-08](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/0609271f-0c2b-46f6-b2d4-b4c2a8d53dbc)
 
+### STEP 2 - CONFIGURATING EBS OF DATABASE TO BECOME A SINGLE MOUNTABLE LOGICAL FILESYSTEM:
 
+* I followed the same steps as for the WEB SERVER, but instead of apps-lv I created db-lv and mounted it to /db directory instead of /var/www/html/.
 
+  ![Screenshot from 2023-07-28 15-59-25](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/1e06cab8-705b-494b-ae66-645f5c91d4de)
 
 
