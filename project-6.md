@@ -166,12 +166,19 @@
 
     sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
   sudo yum install yum-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  
   sudo yum module list php
+  
   sudo yum module reset php
+  
   sudo yum module enable php:remi-7.4
+  
   sudo yum install php php-opcache php-gd php-curl php-mysqlnd
+  
   sudo systemctl start php-fpm
+  
   sudo systemctl enable php-fpm
+  
   setsebool -P httpd_execmem 1
 
 * Then, I restarted Apache using commands:
@@ -179,11 +186,17 @@
     sudo systemctl restart httpd
 * Then, I downloaded wordpress and copied it to the var/www/html folder using the following commands:
      mkdir wordpress
+  
   cd   wordpress
+  
   sudo wget http://wordpress.org/latest.tar.gz
+  
   sudo tar xzvf latest.tar.gz
+  
   sudo rm -rf latest.tar.gz
+  
   sudo cp wordpress/wp-config-sample.php wordpress/wp-config.php
+  
   sudo cp -R wordpress /var/www/html/
 
  ![Screenshot from 2023-07-28 19-44-30](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/59740551-83fb-4e55-87dc-ca5ee2cde37e)
@@ -191,10 +204,87 @@
 * Then, I configured SELinux policies by runnibg the following commands:
 
   sudo chown -R apache:apache /var/www/html/wordpress
+  
   sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
+  
   sudo setsebool -P httpd_can_network_connect=1
 
 ### STEP 4 - INSTALLATION OF MYSQL ON DB SERVER
 
-
+*  I updated RHEL packages using the command:
   
+    sudo yum -y update
+
+* Then, I installed, started and enabled mysql server using the following commands:
+
+    sudo yum install mysql-server
+  
+    sudo systemctl restart mysqld
+  
+    sudo systemctl enable mysqld
+
+    sudo systemctl status mysqld
+
+![Screenshot from 2023-07-28 20-57-45](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/9ea101d5-bd31-45c7-80ee-91196cefeb3e)
+
+### STEP 5 - CONFIGURING DB TO WORK WITH WORDPRESS
+
+* I configured my DB to work with wordpress by running the following commands:
+
+    sudo mysql
+  
+    CREATE DATABASE wordpress;
+  
+    CREATE USER `myuser`@`<Web-Server-Private-IP-Address>` IDENTIFIED BY 'mypass';
+  
+    GRANT ALL ON wordpress.* TO 'myuser'@'<Web-Server-Private-IP-Address>';
+  
+    FLUSH PRIVILEGES;
+  
+    SHOW DATABASES;
+  
+    exit
+
+![Screenshot from 2023-07-28 21-19-26](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/9e8b900e-09a6-4ee0-8518-4e6e82d07af0)
+
+
+### STEP 6 - CONFIGURING WORDPRESS TO CONNECT TO REMOTE DATABASE
+
+* I configured the security group of my DB server to allow MySQL traffic by opening the port 3306 and specifying ip address of the WEB SERVER:
+
+![Screenshot from 2023-07-28 21-27-43](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/4a1f5905-4766-42b6-b34a-7463f504afa1)
+
+* Back on my WEB SERVER, I Installed MySQL client and tested that you can connect from the Web Server to the DB server by using mysql-client:
+
+  sudo yum -y install mysql
+
+  sudo mysql -u user -p -h <DB-Server-Private-IP-address>
+
+* Then, still on the WEB SERVER, I verified that i could view the databases created in the DB server:
+
+    SHOW DATABASES;
+  
+![Screenshot from 2023-07-28 21-39-27](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/793ba0e5-1372-4957-9b91-689f80d0ccf1)
+
+
+* Then, I configured the security group of my WEBSERVER instance to allow HTTP traffic on port 80 from anywhere.
+
+![Screenshot from 2023-07-28 21-50-51](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/d7541312-9811-49ac-b15a-998982efdfd0)
+
+* Then, I edited the config file inside the wordpress folder to add database name, user name, password and hostname as appropriate.
+
+* Then, I restarted Apache to effect the change using the command:
+
+    sudo systemctl restart httpd
+  
+* Then, I Tried to access the WEBSERVER browser the link to your WordPress:
+
+ 
+   http://<Web-Server-Public-IP-Address>/wordpress/
+
+![Screenshot from 2023-07-28 22-10-42](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/6d651fc1-ff77-4fd8-86c9-26dc21b280da)
+
+![Screenshot from 2023-07-28 22-10-33](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/3548c962-bb5c-4baa-aab7-4b156b412cfb)
+
+![Screenshot from 2023-07-28 22-10-04](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/e4835070-0f94-4959-9ef4-c9351b64d158)
+
