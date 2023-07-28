@@ -75,5 +75,51 @@
 
 ![Screenshot from 2023-07-28 12-01-58](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/5d9917a0-6bac-43c2-8961-d655810b5457)
 
-*
-*
+*Then, I verified the entire setup by running the commands:
+
+  sudo vgdisplay -v #view complete setup - VG, PV, and LV
+  
+  sudo lsblk
+
+![Screenshot from 2023-07-28 12-17-07](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/dc962826-92cd-485a-8a71-164c015e42ea)
+
+* Then, I used mkfs.ext4 to format the logical volumes with ext4 filesystem:
+ 
+  sudo mkfs -t ext4 /dev/webdata-vg/apps-lv
+  
+  sudo mkfs -t ext4 /dev/webdata-vg/logs-lv
+
+![Screenshot from 2023-07-28 12-21-51](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/196f4b9e-fc48-4d90-8f46-726135c552b5)
+
+* Then I created /var/www/html directory to store website files using the command:
+
+  sudo mkdir -p /var/www/html
+
+* Then, I created /home/recovery/logs to store backup of log data using the command:
+
+  sudo mkdir -p /home/recovery/logs
+
+* Then I mounted /var/www/html on the apps-lv volume using the command:
+
+  sudo mount /dev/webdata-vg/apps-lv /var/www/html/
+
+* Then, I used the rsync utility to backup all the files in the log directory /var/log into /home/recovery/logs (This is required before mounting the file system):
+
+  sudo rsync -av /var/log/. /home/recovery/logs/
+
+* Then, I mounted /var/log on logs-lv logical volume. (Note that all the existing data on /var/log will be deleted.       That is why the step above is very important):
+  
+    sudo mount /dev/webdata-vg/logs-lv /var/log
+  
+*  Then I restored log files back into /var/log directory
+ 
+    sudo rsync -av /home/recovery/logs/. /var/log/
+
+*   Then I ran the following command to get the UUIDs' I need to edit the /etc/fstab file:
+
+    sudo blkid
+    
+![Screenshot from 2023-07-28 13-09-19](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/eb5b4579-a7c4-490b-a335-f11933192cea)
+
+*  Then I edited the /etc/fstab file to include the UUIDs' of the logical volumes so that the mount configuration will persist after restart of the server: 
+
