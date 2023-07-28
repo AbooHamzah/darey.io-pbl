@@ -121,5 +121,22 @@
     
 ![Screenshot from 2023-07-28 13-09-19](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/eb5b4579-a7c4-490b-a335-f11933192cea)
 
-*  Then I edited the /etc/fstab file to include the UUIDs' of the logical volumes so that the mount configuration will persist after restart of the server: 
+*  Then I edited the /etc/fstab file to include the UUIDs' of the logical volumes so that the mount configuration will persist after restart of the server:
+
+![Screenshot from 2023-07-28 14-42-02](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/eab450b6-5a68-4650-be17-6006d66d2182)
+
+* Then, I tested the configuration and reloaded the daemon using the commands:
+
+    sudo mount -a
+    sudo systemctl daemon-reload
+  
+* Then, I verified that the logical volumes were mounted appropriately by running the command:
+
+    df -h
+
+![Screenshot from 2023-07-28 14-52-08](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/0609271f-0c2b-46f6-b2d4-b4c2a8d53dbc)
+
+
+
+
 
