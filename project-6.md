@@ -65,7 +65,7 @@
   
 ![Screenshot from 2023-07-28 11-55-48](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/08308e9f-2f1e-49cc-bcbd-c6972501425e)
 
-*Then I used lvcreate utility to create 2 logical volumes. apps-lv (half of the PV size), and logs-lv  (the remaining space of the PV size). NOTE: apps-lv was used to store data for the Website while, logs-lv was used to store data for logs.
+* Then I used lvcreate utility to create 2 logical volumes. apps-lv (half of the PV size), and logs-lv  (the remaining space of the PV size). NOTE: apps-lv was used to store data for the Website while, logs-lv was used to store data for logs.
 
   sudo lvcreate -n apps-lv -L 14G webdata-vg
 
@@ -77,7 +77,7 @@
 
 ![Screenshot from 2023-07-28 12-01-58](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/5d9917a0-6bac-43c2-8961-d655810b5457)
 
-*Then, I verified the entire setup by running the commands:
+* Then, I verified the entire setup by running the commands:
 
   sudo vgdisplay -v #view complete setup - VG, PV, and LV
   
@@ -280,7 +280,7 @@
 * Then, I Tried to access the WEBSERVER browser the link to your WordPress:
 
  
-   http://<Web-Server-Public-IP-Address>/wordpress/
+   http://(Web-Server-Public-IP-Address)/wordpress/
 
 ![Screenshot from 2023-07-28 22-10-42](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/6d651fc1-ff77-4fd8-86c9-26dc21b280da)
 
