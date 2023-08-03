@@ -95,4 +95,45 @@
 
 ![Screenshot from 2023-08-03 11-50-09](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/1768b156-6c5b-4fe1-acd2-0c8f0c44cc48)
 
-*
+* Then, I used mkfs.xfs to format the logical volumes with xfs filesystem, running the following commands:
+
+  sudo mkfs -t xfs /dev/webdata-vg/lv-logs
+
+  sudo mkfs -t xfs /dev/webdata-vg/lv-apps
+
+  sudo mkfs -t xfs /dev/webdata-vg/lv-opt
+
+* Then, I verified that the lms had been formated to xfs by running the command:
+
+  blkid
+
+![Screenshot from 2023-08-03 12-00-42](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/d3f24d77-85e0-4d9f-99d6-5d8c3f7f9fc8)
+
+
+* Then, I created mount points on /mnt directory for the logical volumes as follow:
+  
+Mount lv-apps on /mnt/apps – To be used by webservers
+
+Mount lv-logs on /mnt/logs – To be used by webserver logs
+
+Mount lv-opt on /mnt/opt – To be used by Jenkins server in future
+    
+
+* Then, I updated /etc/fstab file so that the mount configuration will persist after restart of the server.
+The UUID of the logical volumes were used to update the /etc/fstab file;
+
+![Screenshot from 2023-08-03 12-28-58](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/c231f033-b4d9-46a1-9870-550f54a225c6)
+
+* Then I tested the configuration and reloaded the daemon
+
+sudo mount -a
+
+sudo systemctl daemon-reload
+
+* After restarting daemon, to verify that the mounts are persistent, i ran the command:
+
+  df -h
+
+![Screenshot from 2023-08-03 12-36-38](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/302c00fa-b7c8-4f63-9afb-9d595aa58763)
+
+
