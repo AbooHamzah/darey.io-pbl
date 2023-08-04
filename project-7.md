@@ -136,4 +136,55 @@ sudo systemctl daemon-reload
 
 ![Screenshot from 2023-08-03 12-36-38](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/302c00fa-b7c8-4f63-9afb-9d595aa58763)
 
+* Then, I set up permission that allowed our Web servers to read, write and execute files on NFS by running the following commands:
 
+sudo chown -R nobody: /mnt/apps
+sudo chown -R nobody: /mnt/logs
+sudo chown -R nobody: /mnt/opt
+
+sudo chmod -R 777 /mnt/apps
+sudo chmod -R 777 /mnt/logs
+sudo chmod -R 777 /mnt/opt
+
+sudo systemctl restart nfs-server.service
+
+* Then, I configured access to NFS for clients within the same subnet by editing /etc/exports file to input the following conent:
+
+![Screenshot from 2023-08-04 10-59-51](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/d5fb0410-73dd-47e7-8a72-9462069c31e3)
+
+* Then, I expoted the changes by runing the following command:
+
+  sudo exportfs -arv
+
+![Screenshot from 2023-08-04 11-01-52](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/c546c671-6938-4892-a761-4b5a5efbac12)
+
+* Then, I checked which port was in used by NFS by runnning the command:
+  
+  rpcinfo -p | grep nfs
+
+![Screenshot from 2023-08-04 11-10-48](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/9766363b-c432-4b63-a695-a535994192a9)
+
+* Then, I opened the port (TCP 2049) by editing Security Groups (add new Inbound Rule) on the AWS console:     
+
+Important note: In order for NFS server to be accessible from your client, you must also open following ports: TCP 111, UDP 111, UDP 2049
+
+![Screenshot from 2023-08-04 11-25-44](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2fe0a294-bfd4-412b-b78f-b425ffb840af)
+
+
+### STEP 2- PREPARING THE WEBSERVERS:
+
+* 
+
+### STEP 3- PREPARING THE DATABASE SERVER:
+
+* I updated apt repositories by running the command:
+
+  sudo apt update -y
+
+* Then, I installed mysql server by running the command:
+
+  sudo apt install mysql-server
+
+* Then, I verified that msql was succesfully installed:
+
+  
