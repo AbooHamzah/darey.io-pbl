@@ -253,6 +253,62 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 ![Screenshot from 2023-08-04 12-02-01](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/71259953-1b40-4144-9d60-f91b8ac780e5)
 
+* Then, I entered into mysql mode with the command:
+
+    sudo mysql
+
+* Then, i created a database and named it tooling with command:
+
+  CREATE DATABASE tooling;
+
+* Then, I created a user and named it WEBACCESS with comand:
+
+     CREATE USER 'WEBACCESS'@'ip of web server(s)' IDENTIFIED BY 'password';
+
+* Then, I granted all permissions on tooling to WEBACCESS with command:
+
+  GRANT ALL ON tooling.* TO 'WEBACCESS'@'172.31.80.0/20';
+
+  FLUSH PRIVILEGES;
+
+* To verify the setup, I ran the command:
+
+    show databases;
+
+![Screenshot from 2023-08-05 11-35-17](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/70b8a38f-7afe-4cfe-8573-68de7b9d12c6)
+
+* Then i edited the security group of my DB server to allow traffic from the cidr block of my webservers from port 3306:
+
+![Screenshot from 2023-08-05 12-21-39](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/e1d30cef-b41b-4fff-805b-7c6785818afe)
+
+
+### STEP 4- INSTALLING MYSQL CLIENT ON WEBSERVERS AND CONNECTING WITH DB SERVER:   
+
+* I installed MySQL client on all 3 WEB SERVERS and tested that I could connect from the Web Servers to the DB server by using mysql-client, I thus ran the commands:
+  
+  sudo yum install mysql
+  
+  sudo mysql -u admin -p -h DB-Server-Private-IP-address
+
+![Screenshot from 2023-08-05 12-31-18](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/f86bbcb7-a6c0-4a0c-92d6-0e019aa0dffc)
+
+
+* Then, I edited the functions.php file to add credentials of the DataBase:
+
+    // connect to database
+  
+    $db = mysqli_connect('ip_addr', 'user', 'password', 'tooling');
+
+* Then I restarted the html:
+
+    sudo systemctl restart httpd
+  
+
+* Back on the DB SERVER, I entered sql mode and then selected the tooling DB, created a table named users where I created a new admin user with username: aboohamzah and password: password:
+
+![Screenshot from 2023-08-05 13-59-52](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/0127267c-7c84-447d-860a-e0f3eaccbd54)
+
+
 
 
 
