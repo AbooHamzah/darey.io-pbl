@@ -173,7 +173,71 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 ### STEP 2- PREPARING THE WEBSERVERS:
 
-* 
+* I launched a new EC2 instance (WEB-01) with RHEL 9 Operating System, then I installed NFS client:
+
+  sudo yum install nfs-utils nfs4-acl-tools -y
+  
+* Then, I mounted /var/www/ and targeted the NFS server’s export for apps:
+  
+  sudo mkdir /var/www
+  
+  sudo mount -t nfs -o rw,nosuid NFS-Server-Private-IP-Address:/mnt/apps /var/www
+
+* Then, I verified that NFS was mounted successfully by running:
+
+  df -h
+
+![Screenshot from 2023-08-04 12-51-54](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ab3e5ea1-ff28-44cc-b4fe-e62ce6b21568)
+
+  
+* Then, I located the app folder for Apache on the Web Server and mount it to NFS server’s export for apps:
+
+  sudo vi /etc/fstab
+  
+* Then, I added the following line:
+
+  NFS-Server-Private-IP-Address:/mnt/apps /var/www nfs defaults 0 0
+
+![Screenshot from 2023-08-04 12-56-39](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/70436b08-37b4-414d-85b8-a62009276389)
+
+  
+* Then I nstalled Remi’s repository, Apache and PHP
+  
+  sudo yum install httpd -y
+
+  sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+
+  sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-.rpm
+
+  sudo dnf module reset php
+
+  sudo dnf module enable php:remi-8.2
+
+  sudo dnf install php php-opcache php-gd php-curl php-mysqlnd
+
+  sudo systemctl start php-fpm
+
+  sudo systemctl enable php-fpm
+
+  setsebool -P httpd_execmem 1
+  
+* Then, I repeated the steps above for another 2 Web Servers (WEB-02 & WEB-03).
+
+* Then, I verified that Apache files and directories are available on the Web Server in /var/www and also on the NFS server in /mnt/apps. 
+
+![Screenshot from 2023-08-04 14-22-47](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/835bdfdf-a09b-48e1-a090-b29a14894ec6)
+
+* Then, I located the log folder for Apache on the Web Server and mount it to NFS server’s export for logs:
+
+  sudo vi /etc/fstab
+  
+* Then, I added the following line:
+
+  NFS-Server-Private-IP-Address:/mnt/logs /var/log/httpd nfs defaults 0 0
+
+![Screenshot from 2023-08-04 14-50-47](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/0b0596ed-1017-41c2-80cf-c8f60fda116d)
+
+
 
 ### STEP 3- PREPARING THE DATABASE SERVER:
 
@@ -187,4 +251,8 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 * Then, I verified that msql was succesfully installed:
 
-  
+![Screenshot from 2023-08-04 12-02-01](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/71259953-1b40-4144-9d60-f91b8ac780e5)
+
+
+
+
