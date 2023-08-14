@@ -306,12 +306,22 @@ Important note: In order for NFS server to be accessible from your client, you m
 * Then, I did a cd into the tooling folder and applied the tooling-db.sql script to the database using this command:
 
  
-   mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql USE tooling;
-  
+   mysql -h (databse-private-ip) -u (db-username) -p database < tooling-db.sql
 
-* Back on the DB SERVER, I entered sql mode and then selected the tooling DB, created a table named users where I created a new admin user with username: aboohamzah and password: password:
+* Then, I restarted msql server and apache server.
 
-![Screenshot from 2023-08-05 13-59-52](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/0127267c-7c84-447d-860a-e0f3eaccbd54)
+    sudo systemctl restart mysql.service (on the DB server)
+    sudo systemctl restart httpd (on the WEB servers)
+
+* Then, I tested all three WEB public ips' on a browser.
+
+![Screenshot from 2023-08-14 14-21-29](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/4844b371-6b47-4386-8310-fd6b90ca44b6)
+
+![Screenshot from 2023-08-14 14-21-41](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/94cfe8ba-2b5b-491c-955b-d16cd9715eb5)
+
+* Then, I went back to the DB server and added another user
+
+
 
 
 
