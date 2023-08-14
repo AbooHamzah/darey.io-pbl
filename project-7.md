@@ -267,7 +267,7 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 * Then, I granted all permissions on tooling to WEBACCESS with command:
 
-  GRANT ALL ON tooling.* TO 'WEBACCESS'@'172.31.80.0/20';
+  GRANT ALL privileges ON tooling.* TO 'WEBACCESS'@'172.31.80.0/20';
 
   FLUSH PRIVILEGES;
 
@@ -302,6 +302,11 @@ Important note: In order for NFS server to be accessible from your client, you m
 * Then I restarted the html:
 
     sudo systemctl restart httpd
+
+* Then, I did a cd into the tooling folder and applied the tooling-db.sql script to the database using this command:
+
+ 
+   mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql USE tooling;
   
 
 * Back on the DB SERVER, I entered sql mode and then selected the tooling DB, created a table named users where I created a new admin user with username: aboohamzah and password: password:
