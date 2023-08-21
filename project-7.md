@@ -1,5 +1,6 @@
-![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/a53d9fc2-f2dc-47dc-b9cd-29032cbe3499)## DEVOPS TOOLING WEBSITE SOLUTION
-* I implemented a tooling website solution which makes access to DevOps tools within the corporate infrastructure easily accessible. This solution that consists of following components:
+## DEVOPS TOOLING WEBSITE SOLUTION
+
+### I implemented a tooling website solution which makes access to DevOps tools within the corporate infrastructure easily accessible. This solution consists of following components:
 
 1) Infrastructure: AWS
 2) Webserver Linux: Red Hat Enterprise Linux 8
@@ -8,7 +9,7 @@
 5) Programming Language: PHP
 6) Code Repository: GitHub
 
-* I utilized the 3-tier Web Application Architecture with a single Database and NFS server as a shared file storage:
+### I utilized the 3-tier Web Application Architecture with a single Database and NFS server as a shared file storage:
   
 ![Tooling-Website-Infrastructure](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/79574931-bebb-4fad-980f-ed120e522a1d)
 
@@ -37,7 +38,7 @@
 
 * Then, I confirmed if the partitions were created as configured by running:
 
-    lsblk
+  lsblk
   
   ![Screenshot from 2023-08-03 11-06-53](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/12fd5aef-867e-4eda-b6d0-91f9af85d0bb)
 
@@ -68,22 +69,22 @@
 
 * Then i confirmed that they were added to the VG by running command:
 
-    sudo vgs
+  sudo vgs
 
   
 ![Screenshot from 2023-08-03 11-33-41](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/7d37dc6b-77a2-4627-81ef-0012f528682d)
 
 * Then, I used the lvcreate utility to create 3 logical volumes, namely:  lv-opt, lv-apps, and lv-logs.
 
-    sudo lvcreate -n lv-opt -L 9G webdata-vg
+  sudo lvcreate -n lv-opt -L 9G webdata-vg
   
-    sudo lvcreate -n lv-logs -L 9G webdata-vg
+  sudo lvcreate -n lv-logs -L 9G webdata-vg
 
-    sudo lvcreate -n lv-apps -L 9G webdata-vg
+  sudo lvcreate -n lv-apps -L 9G webdata-vg
 
 * Then, I verified that the logical volumes had been created by running the command:
 
-    sudo lvs
+  sudo lvs
 
 ![Screenshot from 2023-08-03 11-43-17](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/f7f0aa07-4c3a-4f7a-82a9-44bb1fc79dce)
 
@@ -112,11 +113,11 @@
 
 * Then, I created mount points on /mnt directory for the logical volumes as follow:
   
-Mount lv-apps on /mnt/apps – To be used by webservers
+  Mount lv-apps on /mnt/apps – To be used by webservers
 
-Mount lv-logs on /mnt/logs – To be used by webserver logs
+  Mount lv-logs on /mnt/logs – To be used by webserver logs
 
-Mount lv-opt on /mnt/opt – To be used by Jenkins server in future
+  Mount lv-opt on /mnt/opt – To be used by Jenkins server in future
     
 
 * Then, I updated /etc/fstab file so that the mount configuration will persist after restart of the server.
@@ -126,9 +127,9 @@ The UUID of the logical volumes were used to update the /etc/fstab file;
 
 * Then I tested the configuration and reloaded the daemon
 
-sudo mount -a
+  sudo mount -a
 
-sudo systemctl daemon-reload
+  sudo systemctl daemon-reload
 
 * After restarting daemon, to verify that the mounts are persistent, i ran the command:
 
@@ -138,15 +139,19 @@ sudo systemctl daemon-reload
 
 * Then, I set up permission that allowed our Web servers to read, write and execute files on NFS by running the following commands:
 
-sudo chown -R nobody: /mnt/apps
-sudo chown -R nobody: /mnt/logs
-sudo chown -R nobody: /mnt/opt
+  sudo chown -R nobody: /mnt/apps
 
-sudo chmod -R 777 /mnt/apps
-sudo chmod -R 777 /mnt/logs
-sudo chmod -R 777 /mnt/opt
+  sudo chown -R nobody: /mnt/logs
 
-sudo systemctl restart nfs-server.service
+  sudo chown -R nobody: /mnt/opt
+
+  sudo chmod -R 777 /mnt/apps
+
+  sudo chmod -R 777 /mnt/logs
+
+  sudo chmod -R 777 /mnt/opt
+
+  sudo systemctl restart nfs-server.service
 
 * Then, I configured access to NFS for clients within the same subnet by editing /etc/exports file to input the following conent:
 
@@ -255,7 +260,7 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 * Then, I entered into mysql mode with the command:
 
-    sudo mysql
+  sudo mysql
 
 * Then, i created a database and named it tooling with command:
 
@@ -263,7 +268,7 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 * Then, I created a user and named it WEBACCESS with comand:
 
-     CREATE USER 'WEBACCESS'@'ip of web server(s)' IDENTIFIED BY 'password';
+  CREATE USER 'WEBACCESS'@'ip of web server(s)' IDENTIFIED BY 'password';
 
 * Then, I granted all permissions on tooling to WEBACCESS with command:
 
@@ -273,7 +278,7 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 * To verify the setup, I ran the command:
 
-    show databases;
+  show databases;
 
 ![Screenshot from 2023-08-05 11-35-17](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/70b8a38f-7afe-4cfe-8573-68de7b9d12c6)
 
@@ -310,16 +315,34 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 * Then, I restarted msql server and apache server.
 
-    sudo systemctl restart mysql.service (on the DB server)
-    sudo systemctl restart httpd (on the WEB servers)
+  sudo systemctl restart mysql.service (on the DB server)
+  
+  sudo systemctl restart httpd (on the WEB servers)
 
 * Then, I tested all three WEB public ips' on a browser.
 
 ![Screenshot from 2023-08-14 14-21-29](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/4844b371-6b47-4386-8310-fd6b90ca44b6)
 
-![Screenshot from 2023-08-14 14-21-41](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/94cfe8ba-2b5b-491c-955b-d16cd9715eb5)
+![Screenshot from 2023-08-21 12-28-22](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/8d95345b-ef4b-45ef-b7e4-aff4b87dcbd7)
 
-* Then, I went back to the DB server and added another user
+
+* Then, I went back to the DB server and added another user using the command
+
+  INSERT INTO users (username, password, email, user_type, status)
+    -> VALUES ('myuser', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@mail.com', 'admin', 1);
+
+* Then, I confirmed that the entry had been inserted into the table "users" by running the command:
+
+  SELECT * FROM users;
+
+![Screenshot from 2023-08-21 12-55-21](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/b3917456-fe70-458e-944f-5e2211ac06b7)
+
+* Then, I logged into the tooling website with the new user 'myuser' and password "password":
+
+![Screenshot from 2023-08-21 12-52-31](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/6f804bd8-d995-4c57-ae2b-244ada5b1dd4)
+
+![Screenshot from 2023-08-21 12-52-45](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/f5b3acb3-630b-4384-8776-c447c0746598)
+
 
 
 
