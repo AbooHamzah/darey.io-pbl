@@ -67,23 +67,7 @@ In this project, I enhanced the Tooling Website solution(Project 7) by adding a 
 
 * Then I edited the /etc/apache2/sites-available/000-default.conf file, adding the following:
   
-    <Proxy "balancer://mycluster">
-  
-               BalancerMember http://<WebServer1-Private-IP-Address>:80 loadfactor=5 timeout=1
-  
-               BalancerMember http://<WebServer2-Private-IP-Address>:80 loadfactor=5 timeout=1
-  
-               ProxySet lbmethod=bytraffic
-  
-               # ProxySet lbmethod=byrequests
-  
-        </Proxy>
-
-        ProxyPreserveHost On
-  
-        ProxyPass / balancer://mycluster/
-  
-        ProxyPassReverse / balancer://mycluster/
+  ![Screenshot from 2023-08-23 15-53-57](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/9a66f370-615e-4cfe-bcba-7234657b6e8d)
 
 * Then I restarted the apache server:
 
