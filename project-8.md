@@ -85,7 +85,7 @@ In this project, I enhanced the Tooling Website solution(Project 7) by adding a 
 
 ### STEP 2- CONFIGURING LOCAL DNS NAME RESOLUTION
 
-* I edited the /etc/hosts file to add the follwoing entry:
+* I edited the /etc/hosts file to attach names to the WEB private ip addresses:
 
 ![Screenshot from 2023-08-23 11-27-25](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/39debbda-8914-4e47-82a1-e0cdc011aec6)
 
