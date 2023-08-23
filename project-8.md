@@ -98,6 +98,12 @@ In this project, I enhanced the Tooling Website solution(Project 7) by adding a 
 
 ![Screenshot from 2023-08-23 11-27-25](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/39debbda-8914-4e47-82a1-e0cdc011aec6)
 
-* Then, I edited the LB config file replacing the ipaddresses with the given names:
+* Then, I edited the LB config file replacing the ip-addresses with the given names:
 
 ![Screenshot from 2023-08-23 11-29-54](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2fb7d3e0-5fda-4cf3-bf3f-ee35a711f1fe)
+
+* Then, on the terminal of the LB server I did a curl of the Locally Resolved Names attached to WEB1 and WEB2:
+
+![Screenshot from 2023-08-23 11-40-24](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/a9086ba2-bc3a-42b9-a313-8f34741fbbae)
+
+![Screenshot from 2023-08-23 11-40-47](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/b74246ec-1ae1-40cc-934a-1a5c47695baf)
