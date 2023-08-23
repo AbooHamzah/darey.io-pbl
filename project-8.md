@@ -1,4 +1,4 @@
-![Screenshot from 2023-08-23 10-50-41](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/288a3b50-6a47-422a-92b9-cec169af9ae5)## LOAD BALANCER SOLUTION WITH APACHE
+## LOAD BALANCER SOLUTION WITH APACHE
 
 In this project, I enhanced the Tooling Website solution(Project 7) by adding a Load Balancer to disctribute traffic between the multiple Web Servers and allow users to access our website using a single URL.
 
