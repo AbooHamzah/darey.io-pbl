@@ -210,13 +210,13 @@ Important note: In order for NFS server to be accessible from your client, you m
   
   sudo yum install httpd -y
 
-  sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+  sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
-  sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-.rpm
+  sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
   sudo dnf module reset php
 
-  sudo dnf module enable php:remi-8.2
+  sudo dnf module enable php
 
   sudo dnf install php php-opcache php-gd php-curl php-mysqlnd
 
