@@ -352,8 +352,7 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 * Then, I went back to the DB server and added another user using the command
 
-  INSERT INTO users (username, password, email, user_type, status)
-    -> VALUES ('myuser', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@mail.com', 'admin', 1);
+  INSERT INTO users (username, password, email, user_type, status) VALUES ('myuser', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@mail.com', 'admin', 1);
 
 * Then, I confirmed that the entry had been inserted into the table "users" by running the command:
 
