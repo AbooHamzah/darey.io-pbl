@@ -286,9 +286,33 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 ![Screenshot from 2023-08-05 12-21-39](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/e1d30cef-b41b-4fff-805b-7c6785818afe)
 
+* Then I edited the file /etc/mysql/mysql.conf.d/mysqld.cnf changing binding address to 0.0.0.0
+
+  
+![Screenshot from 2023-09-07 19-53-00](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/dcee1167-7ac4-4f91-9eab-da1150805180)
+
 
 ### STEP 4- INSTALLING MYSQL CLIENT ON WEBSERVERS AND CONNECTING WITH DB SERVER:   
+* I forked the tooling repo to my account
+* Then, I installed git on my webservers:
 
+    sudo yum -y install git.
+
+* Then, I cloned the repository on my webservers:
+
+    git clone https://github.com/AbooHamzah/tooling.git
+
+* Running an ls command the tooling folder appears.
+
+![Screenshot from 2023-09-07 20-31-46](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/275e9264-cf53-4d3e-a6d6-2361deb94b9a)
+
+* Then I did a cd into the tooling/html/ and copied its contents into /var/www/html
+
+  cd tooling/html/
+  
+  sudo cp -R . /var/www/html/
+
+  
 * I installed MySQL client on all 3 WEB SERVERS and tested that I could connect from the Web Servers to the DB server by using mysql-client, I thus ran the commands:
   
   sudo yum install mysql
