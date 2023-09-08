@@ -224,7 +224,7 @@ Important note: In order for NFS server to be accessible from your client, you m
 
   sudo systemctl enable php-fpm
 
-  setsebool -P httpd_execmem 1
+  setsebool -P httpd_execmem  (very important to make changes persistent)
   
 * Then, I repeated the steps above for another 2 Web Servers (WEB-02 & WEB-03).
 
