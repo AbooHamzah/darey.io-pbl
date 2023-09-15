@@ -79,7 +79,7 @@ server {
 ![Screenshot from 2023-09-15 12-01-05](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/bb887be5-59e1-4246-a0ec-fba9bc88999e)
 
 - Then, I installed certbot and requested for an SSL/TLS certificate
-- 
+
 ### Make sure snapd service is active and running by running (sudo systemctl status snapd)
 
 - Then, I installed certbot
