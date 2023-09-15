@@ -66,4 +66,35 @@ server {
 
 ### STEP 2 - REGISTERING A NEW DOMAIN NAME, ATTCAHING OUR NGINX-LB PUBLIC IP ADDRESS AND CONFIGURING SECURED CONNECTION USING SSL/TLS CERTIFICATES
 
+- I registered the domain name toolingexample.online with GoDaddy
+
+![Screenshot from 2023-09-15 11-55-38](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/5cf9c984-60dd-4381-b6ce-e31642b9efbb)
+
+- Then, I updated the A record in GoDaddy to point to Nginx LB using Elastic IP address
+
+![Screenshot from 2023-09-15 11-58-02](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/45745e47-0e4f-49f1-b5fd-593be0461dc1)
+
+- Then, I configured Nginx to recognize the domain name (www.toolingexample.online), updating the nginx.conf with server_name www.toolingexample.online instead of server_name www.domain.com
+
+![Screenshot from 2023-09-15 12-01-05](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/bb887be5-59e1-4246-a0ec-fba9bc88999e)
+
+- Then, I installed certbot and requested for an SSL/TLS certificate
 - 
+### Make sure snapd service is active and running by running (sudo systemctl status snapd)
+
+- Then, I installed certbot
+
+  sudo snap install --classic certbot
+
+- Then, I requested for TLS certificate following the certbot instructions 
+
+  sudo ln -s /snap/bin/certbot /usr/bin/certbot
+  
+  sudo certbot --nginx
+
+  ![Screenshot from 2023-09-15 12-09-22](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/52ce9fc4-97b3-4015-904b-b0fa162f9546)
+
+- Then I tried reaching out domain by using https:
+
+![Screenshot from 2023-09-15 12-12-26](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/acbd2b5c-a915-4ff4-a03a-1ca4aa065e40)
+
