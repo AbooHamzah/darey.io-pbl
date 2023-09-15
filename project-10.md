@@ -107,3 +107,6 @@ server {
 
 ![Screenshot from 2023-09-15 12-12-26](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/acbd2b5c-a915-4ff4-a03a-1ca4aa065e40)
 
+![Screenshot from 2023-09-15 12-11-06](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ef2a03b7-8625-44d3-9080-c0a67e0f6d9c)
+
+
