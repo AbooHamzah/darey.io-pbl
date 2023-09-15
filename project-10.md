@@ -32,16 +32,25 @@ The target architecture will look like this:
 - Then, I configured Nginx LB using Web Servers’ names defined in /etc/hosts file by editing the default nginx configuration file(sudo vi /etc/nginx/nginx.conf) with the following:
 
   upstream myproject {
+  
     server web1 weight=5;
+  
     server web2 weight=5;
+  
   }
 
 server {
+
     listen 80;
+    
     server_name www.toolingexample.online;
+    
     location / {
+    
       proxy_pass http://myproject;
+      
     }
+    
   }
 
 #### N/B: I commented out the below line:
@@ -92,7 +101,7 @@ server {
   
   sudo certbot --nginx
 
-  ![Screenshot from 2023-09-15 12-09-22](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/52ce9fc4-97b3-4015-904b-b0fa162f9546)
+![Screenshot from 2023-09-15 12-09-22](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/52ce9fc4-97b3-4015-904b-b0fa162f9546)
 
 - Then I tried reaching out domain by using https:
 
