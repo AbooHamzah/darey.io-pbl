@@ -1,4 +1,4 @@
-## ANSIBLE CONFIGURATION MANAGEMENT – AUTOMATING PROJECT 7 TO 10
+![Screenshot from 2023-10-02 19-30-21](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2a93f812-81cd-41b6-a529-329152b080c0)## ANSIBLE CONFIGURATION MANAGEMENT – AUTOMATING PROJECT 7 TO 10
 
 ### STEP 1-INSTALLING AND CONFIGURING ANSIBLE ON EC2 INSTANCE
 
@@ -95,4 +95,36 @@ ssh ec2-user@ip_address (for rhel)
 
 #### N/B: This playbook is divided into two parts, each of them is intended to perform the same task: install wireshark utility (or make sure it is updated to the latest version) on your RHEL 8 and Ubuntu servers. It uses root user to perform this task and respective package manager: yum for RHEL 8 and apt for Ubuntu.
 
-### Step 6 – Updating GIT with the latest code
+### Step 6– UPDATING GIT WITH THE LATEST CHANGES
+
+- To update git with latest changes, I ran the following:
+
+  git add --all
+
+  git commit -m "commit message"
+
+- After setting personal access token(classic), i did a git push with command
+
+  git push origin dev
+
+- When prompted for password, I pasted the classic token and my push was succesful
+
+![Screenshot from 2023-10-02 19-06-15](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/cd4977c6-ae02-453c-b641-f21f44af2d35)
+
+- Then I created a pull request and merged succesfully to main branch on github
+- Back in my terminal, I switched to main branch and did a git pull so that the merge done on github would reflect locally
+  
+![Screenshot from 2023-10-02 19-22-55](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/3160dada-7227-4d1b-886a-c25098f8d7df)
+
+- Jenkins automatically built the change upon merging as shown below
+
+  ![Screenshot from 2023-10-02 19-25-25](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2f5a58dd-55c4-4d9f-b9c7-70ac966b61f6)
+
+- All relevant files were automatically saved (build artifacts) to /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/ directory on Jenkins-Ansible server.
+
+![Uploading Screenshot from 2023-10-02 19-30-21.png…]()
+
+
+
+
+
