@@ -75,7 +75,7 @@ git checkout dev
 
 - Firstly, I ensured that The Jenkins-Ansible host has ssh access to other hosts by generating a public key with command:
 
-ssh-keygen
+ ssh-keygen
 
 -Then, I copied the key inside ~/.ssh/id_rsa.pub file.
 -Then, I pasted the contenet in ~/.ssh/authorized_keys file for every other host
