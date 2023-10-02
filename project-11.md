@@ -124,6 +124,21 @@ ssh ec2-user@ip_address (for rhel)
 
 ![Uploading Screenshot from 2023-10-02 19-30-21.png…]()
 
+### STEP 7- RUNNING FIRST ANSIBLE PLAYBOOK
+
+- I changed directory into ansible-config-mgt folder
+  
+  cd ansible-config-mgt
+
+- Then, I ran  the following ansible command
+
+  ansible-playbook -i inventory/dev.yml playbooks/common.yml
+
+![Screenshot from 2023-10-02 20-36-29](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/dda27ced-0129-433e-a0be-e193f66a0c9b)
+
+- To verify that the target servers were affected
+
+![Screenshot from 2023-10-02 20-48-17](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/d459aff1-be0a-4672-99ca-5f174e775d38)
 
 
 
