@@ -1,4 +1,4 @@
-![Screenshot from 2023-10-02 19-30-21](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2a93f812-81cd-41b6-a529-329152b080c0)## ANSIBLE CONFIGURATION MANAGEMENT – AUTOMATING PROJECT 7 TO 10
+## ANSIBLE CONFIGURATION MANAGEMENT – AUTOMATING PROJECT 7 TO 10
 
 ### STEP 1-INSTALLING AND CONFIGURING ANSIBLE ON EC2 INSTANCE
 
@@ -9,6 +9,7 @@
   sudo apt update
 
   sudo apt install ansible
+  
 - Then, I verified that Ansible was installed by checking Ansible version by running:
 
    ansible --version
@@ -19,13 +20,13 @@
 
 - I created a new Freestyle project named ansible in Jenkins and pointed it to the ‘ansible-config-mgt’ repository.
 
-  ![Screenshot from 2023-09-30 18-33-48](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/89ce9c40-a99f-4b41-96cf-04acc860c214)
+![Screenshot from 2023-09-30 18-33-48](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/89ce9c40-a99f-4b41-96cf-04acc860c214)
 
-  ![Screenshot from 2023-09-30 18-35-11](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/40a557d7-b280-4137-8c6e-111600414d01)
+![Screenshot from 2023-09-30 18-35-11](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/40a557d7-b280-4137-8c6e-111600414d01)
 
 - Then, I configured Webhook in GitHub and set webhook to trigger ansible build.
 
-  ![Screenshot from 2023-09-30 18-45-56](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/e3041482-724f-4993-8f47-48706b392dbb)
+![Screenshot from 2023-09-30 18-45-56](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/e3041482-724f-4993-8f47-48706b392dbb)
 
 - Then, I configured a Post-build job to save all (**) files.
 
@@ -37,7 +38,7 @@
 
 - Then, I saved the configuration and built the job.
 
-  ![Screenshot from 2023-09-30 18-40-59](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ad3a5126-7a22-46ca-b1a5-75e7b4992477)
+![Screenshot from 2023-09-30 18-40-59](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ad3a5126-7a22-46ca-b1a5-75e7b4992477)
 
 ### STEP 3- PREPARING IDE (VISUAL STUDIO CODE)
 
@@ -82,6 +83,7 @@ git checkout dev
 -Then, I tested the connection from the Jenkins_Ansible instance by running:
 
 ssh ubuntu@ip_address (for ubuntu based servers)
+
 ssh ec2-user@ip_address (for rhel)
 
 -Then, I edited the dev.yml file under inventory to add the following:
@@ -89,9 +91,9 @@ ssh ec2-user@ip_address (for rhel)
 ![Screenshot from 2023-10-02 16-52-19](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/912b1529-f370-464c-ada3-4d27a8090cec)
 
 
-  -Then, I updated the playbooks/common.yml file with following code:
+-Then, I updated the playbooks/common.yml file with following code:
 
-  ![Screenshot from 2023-10-02 17-36-04](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ee006e99-4d03-418e-ab14-178517c509ac)
+![Screenshot from 2023-10-02 17-36-04](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ee006e99-4d03-418e-ab14-178517c509ac)
 
 #### N/B: This playbook is divided into two parts, each of them is intended to perform the same task: install wireshark utility (or make sure it is updated to the latest version) on your RHEL 8 and Ubuntu servers. It uses root user to perform this task and respective package manager: yum for RHEL 8 and apt for Ubuntu.
 
@@ -118,11 +120,12 @@ ssh ec2-user@ip_address (for rhel)
 
 - Jenkins automatically built the change upon merging as shown below
 
-  ![Screenshot from 2023-10-02 19-25-25](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2f5a58dd-55c4-4d9f-b9c7-70ac966b61f6)
+![Screenshot from 2023-10-02 19-25-25](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/2f5a58dd-55c4-4d9f-b9c7-70ac966b61f6)
 
 - All relevant files were automatically saved (build artifacts) to /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/ directory on Jenkins-Ansible server.
 
-![Uploading Screenshot from 2023-10-02 19-30-21.png…]()
+![Screenshot from 2023-10-02 19-30-21](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/93d94389-0bad-4831-9afa-305496001105)
+
 
 ### STEP 7- RUNNING FIRST ANSIBLE PLAYBOOK
 
