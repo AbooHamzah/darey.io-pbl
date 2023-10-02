@@ -71,7 +71,7 @@ git checkout dev
 
 ![Screenshot from 2023-10-02 13-03-31](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/1e29cb11-bfc0-4877-ba63-c5adc48c02ac)
 
-### STEP 5- SETTING UP ANSIBLE INVENTARY
+### STEP 5- SETTING UP ANSIBLE INVENTARY AND CREATING A COMMON PLAYBOOK
 
 - Firstly, I ensured that The Jenkins-Ansible host has ssh access to other hosts by generating a public key with command:
 
@@ -88,5 +88,11 @@ ssh ec2-user@ip_address (for rhel)
 
 ![Screenshot from 2023-10-02 16-52-19](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/912b1529-f370-464c-ada3-4d27a8090cec)
 
-- Then I did a git add and git commit.
-- 
+
+  -Then, I updated the playbooks/common.yml file with following code:
+
+  ![Screenshot from 2023-10-02 17-36-04](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/ee006e99-4d03-418e-ab14-178517c509ac)
+
+#### N/B: This playbook is divided into two parts, each of them is intended to perform the same task: install wireshark utility (or make sure it is updated to the latest version) on your RHEL 8 and Ubuntu servers. It uses root user to perform this task and respective package manager: yum for RHEL 8 and apt for Ubuntu.
+
+### Step 6 – Updating GIT with the latest code
