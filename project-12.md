@@ -62,3 +62,30 @@ sudo mkdir /home/ubuntu/ansible-config-artifact
 
 ![Screenshot from 2023-10-07 16-10-55](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/64b8cc04-2cf1-40f7-9a67-3c6093fc925f)
 
+
+### STEP 3 - CONFIGURE UAT WEBSERVERS WITH A ROLE ‘WEBSERVER’.
+
+- I spun up 2 new Ec2 instances named "WEB1-UAT" and "WEB2-UAT" with RHEL-9 AMI and t2.micro as instance type.
+- Then, I used an Ansible utility called ansible-galaxy inside ansible-config-mgt/roles directory
+  
+mkdir roles
+
+cd roles
+
+ansible-galaxy init webserver
+
+![Screenshot from 2023-10-07 17-16-49](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/48e2f2b5-dc0a-4824-803f-b4491a44356d)
+
+![Screenshot from 2023-10-07 17-46-27](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/d4c348ad-0670-4bbd-84bc-1a9825548e63)
+
+-After removing unnecessary folders and files:
+
+![Screenshot from 2023-10-07 17-46-48](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/755f51a2-d183-4f13-be8c-8513473687f8)
+
+-Then, I updated the UAT inventory ansible-config-mgt/inventory/uat.yml file with IP addresses of the 2 UAT Web servers
+
+![Screenshot from 2023-10-07 17-49-52](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/1f432193-0e69-474a-a95a-5bf74743f941)
+
+- Then I configured SSH-Agent
+- 
+
