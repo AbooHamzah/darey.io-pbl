@@ -60,4 +60,5 @@ sudo mkdir /home/ubuntu/ansible-config-artifact
 
 ![Screenshot from 2023-10-07 15-58-04](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/7ce40aa3-78da-44db-b1eb-437360e71309)
 
--
+![Screenshot from 2023-10-07 16-10-55](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/64b8cc04-2cf1-40f7-9a67-3c6093fc925f)
+
