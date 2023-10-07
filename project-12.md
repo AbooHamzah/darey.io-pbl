@@ -1,6 +1,6 @@
 ## ANSIBLE REFACTORING AND STATIC ASSIGNMENTS (IMPORTS AND ROLES)
 
-### Step 1 – JENKINS JOB ENHANCEMENT
+### STEP 1 – JENKINS JOB ENHANCEMENT
 
 - I did an SSH into the Jenkins-Ansible server and created a new directory called ansible-config-artifact – where I intended to store all artifacts after each build.
 
@@ -29,3 +29,35 @@ sudo mkdir /home/ubuntu/ansible-config-artifact
 
 
 ![Screenshot from 2023-10-04 21-27-08](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/5c9c2a23-7a97-43e6-b942-99120e75a749)
+
+### STEP 2 - REFACTORING ANSIBLE CODE BY IMPORTING OTHER PLAYBOOKS INTO SITE.YML
+
+- I created another folder in my git root repository named "static-assignments"
+- Then, I did a cd into playbooks and created site.yml (site.yml will now be considered as an entry point into the entire infrastructure configuration. Other playbooks will be included here as a reference. In other words, site.yml will become a parent to all other playbooks that will be developed. Including common.yml that I created previously)
+- Then i moved common.yml from playbooks to static assignments directory
+- In site.yml, I imported common.yml
+
+![Screenshot from 2023-10-07 14-57-47](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/4cc9125c-5ec6-4f25-9f7a-7b7abe9189a4)
+
+- The folder structure thus became as depicted below:
+
+![Screenshot from 2023-10-07 14-58-40](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/b397268e-a5f2-4cba-b1e0-cc1124caf038)
+
+- Then, in order to test that the imports in site.yml work, I created another playbook under static-assignments and named it common-del, the aim of this playbook was to uninstall the already deleted wireshark on all dev server(web1, 2, lb, db,nfs).
+- Below is the content of the common-del playbook
+
+![Screenshot from 2023-10-07 15-32-47](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/7fe18ea3-391d-4628-9879-62a8381b4310)
+
+- Then I edited the site.yml file under playbooks as below:
+
+![Screenshot from 2023-10-07 15-41-07](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/a3b694d4-c480-4d70-8926-b80daf528be0)
+
+- Then, I ran the playbook with the below command:
+
+  cd /home/ubuntu/ansible-config-mgt/
+
+  ansible-playbook -i inventory/dev.yml playbooks/site.yml
+
+![Screenshot from 2023-10-07 15-58-04](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/7ce40aa3-78da-44db-b1eb-437360e71309)
+
+-
