@@ -87,5 +87,30 @@ ansible-galaxy init webserver
 ![Screenshot from 2023-10-07 17-49-52](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/1f432193-0e69-474a-a95a-5bf74743f941)
 
 - Then I configured SSH-Agent
-- 
+- Then in  /etc/ansible/ansible.cfg file, I uncommented roles_path string and provided a full path to your roles directory
 
+  roles_path    = /home/ubuntu/git/ansible-config-mgt/roles, so Ansible could know where to find configured roles.
+
+- Then, I did a cd into tasks directory, and within the main.yml file, start writing configuration tasks to do the following:
+
+Install and configure Apache (httpd service)
+Clone Tooling website from GitHub https://github.com/<your-name>/tooling.git.
+Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
+Make sure httpd service is started
+
+![Screenshot from 2023-10-07 21-28-21](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/1602ed59-1eba-403b-8aae-702faf2eb273)
+
+
+### STEP 4- REFERENCE WEBSERVER ROLE
+
+- Within the static-assignments folder, I created a new assignment for uat-webservers uat-webservers.yml. N/B: This is where I referenced the role.
+
+![Screenshot from 2023-10-07 21-35-03](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/14de0da9-496d-48b6-9f7b-d3caa0132892)
+
+- Then, I modified the site.yml file to reference uat-webserver.yml
+
+![Screenshot from 2023-10-07 21-37-20](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/5f568e78-e962-46b0-bec9-f9f344dfdd2c)
+
+### Step 5 – COMMITING AND TESTING
+
+-
