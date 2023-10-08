@@ -113,4 +113,23 @@ Make sure httpd service is started
 
 ### Step 5 – COMMITING AND TESTING
 
--
+- I commited the changes, create a Pull Request and merged them to master branch, made sure the jobs were triggered on jenkins and files copied.
+- Then I ran the playbook against the uat inventory 
+
+ansible-playbook -i /home/ubuntu/git/ansible-config-mgt/inventory/uat.yml /home/ubuntu/git/ansible-config-mgt/playbooks/site.yml
+
+![Screenshot from 2023-10-08 19-55-19](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/9590ec6f-0601-4722-9f24-e5ad5a0729a2)
+
+- Then I tried reaching both uat servers over the browser:
+
+  http://<Web1-UAT-Server-Public-IP-or-Public-DNS-Name>/index.php
+
+  ![Screenshot from 2023-10-08 20-01-57](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/f06b6d62-20b6-4afc-8afa-81ac5fa17545)
+
+![Screenshot from 2023-10-08 20-06-09](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/65a7aaed-8a80-4ca7-a85b-f3b541d5300e)
+
+
+- Thus our ansible architecture now looks like this:
+
+![Screenshot from 2023-10-08 20-07-46](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/31f5016e-4c2f-430a-891d-65089b80ed70)
+
