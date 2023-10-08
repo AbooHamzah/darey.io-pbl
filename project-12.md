@@ -122,7 +122,7 @@ ansible-playbook -i /home/ubuntu/git/ansible-config-mgt/inventory/uat.yml /home/
 
 - Then I tried reaching both uat servers over the browser:
 
-  http://<Web1-UAT-Server-Public-IP-or-Public-DNS-Name>/index.php
+  http://Web1-UAT-Server-Public-IP-or-Public-DNS-Name/index.php
 
   ![Screenshot from 2023-10-08 20-01-57](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/f06b6d62-20b6-4afc-8afa-81ac5fa17545)
 
