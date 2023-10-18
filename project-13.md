@@ -21,7 +21,7 @@ touch env-vars.yml
 
 ### STEP 2- UPDATE SITE.YML WITH DYNAMIC ASSIGNMENTS
 - I update site.yml file with the following to make use of the dynamic assignment.
-- 
+ 
 ![Screenshot from 2023-10-18 21-15-18](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/097cbe7a-c9eb-4351-b478-26ed186e3c81)
 
    
