@@ -50,4 +50,19 @@ git push --set-upstream origin roles-feature
 
   ### STEP 3- CREATING LOAD BALANCER ROLES
 
-  
+  - In the roles directory, I downloaded an NGINX role
+
+   ansible-galaxy install geerlingguy.nginx
+
+  - Then I proceeded to download an APACHE role
+
+   ansible-galaxy install geerlingguy.nginx
+
+  - Then I edited the config in roles/nginx/defaults/main.yml to add the ip adresses of the two uat-webservers
+    
+![Screenshot from 2023-10-22 19-49-59](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/737406d5-45d2-4a53-9e48-f334eb0ccce1)
+
+- Then I edited the config in roles/nginx/tasks/main.yml, uncomenting NHINX SETUP and setting become to true.
+
+![Screenshot from 2023-10-22 19-48-19](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/24ef4f9f-a568-4f68-8559-ada77507ba7b)
+
