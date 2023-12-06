@@ -1,68 +1,26 @@
-## ANSIBLE DYNAMIC ASSIGNMENTS (INCLUDE) AND COMMUNITY ROLES
+# ANSIBLE DYNAMIC ASSIGNMENTS (INCLUDE) AND COMMUNITY ROLES
+#
 
-### STEP 1- INTRODUCING DYNAMIC ASSIGNMENT INTO OUR STRUCTURE
-- In terminal(VSC), I started a new branch and called it dynamic-assignments.
+In this project, we introduced the concept of the use of Dynamic assignments. The major difference between static and dynamic assignments is in the use of `import and include ststements.`
 
-git checkout -b dynamic-assignments
-  
-![Screenshot from 2023-10-18 19-53-20](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/fe9881f0-85f4-4c99-9a0f-a14adccd0ce8)
+Include does similar thing as Imports but differs because it is dynamic. Dynamic in the sense that ansible is able pick changes in playbooks added to a master playbook in real time. In import ansible preprocesses everything runs the playbook with the data it has. Changes made while executing the playbook is ignored.
 
-- Then, I created a new folder, named it dynamic-assignments.
+Created a role-feature branch to implement the dynamic assignments  of ansible
 
-cd /git/ansible-config-mgt/
-  
-- Then inside this folder, I created a new file and name it env-vars.yml.
+![](./img/1.branch.png)
 
-touch env-vars.yml
+Set up environment vars which contains variables perculiar to each environment
 
-- Then, I edited the env-vars.yml file to add the following:
+![](./img/2.env_vars.png)
 
-![Screenshot from 2023-10-18 20-57-32](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/f888ab6c-8f6e-4242-b4e0-9471fab212a9)
+Apply the following configuration to the env_vars.yaml file in the dynamic ssignments folder
 
-### STEP 2- UPDATE SITE.YML WITH DYNAMIC ASSIGNMENTS
-- I update site.yml file with the following to make use of the dynamic assignment.
- 
-![Screenshot from 2023-10-18 21-15-18](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/097cbe7a-c9eb-4351-b478-26ed186e3c81)
+![](./img/3.envVars.png)
 
-- Then, I created a new git branch named "roles-feature" and switched to it
-- Then, I did a cd into roles directory and downloaded a new MySQL role  ansible-galaxy by running command
+Using ansible galaxy, installing configuration roles for apache and nginx. This configurations have been pre-written and referenced inside our static-assignments.
 
-install geerlingguy.mysql and rename the folder to mysql
+![](./img/4.edits.png)
 
-- Then, I renamed the downloaded folder
+Running ansible-playbook on entry-point site.yml which loops through env_vars.yaml and conditionally applies configurations based on specified variables in each environment.
 
-mv geerlingguy.mysql/ mysql
-
-- Then i went into the just renamed mysql/defaults/main.yml and edited the database credentials
-
-  ![Screenshot from 2023-10-22 17-34-51](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/4c4a9977-12fb-4da7-be93-0097e6f3fa22)
-
-- Then I uploaded the changes to github
-
-git add --all
-
-git commit -m "Commit new role files into GitHub"
-
-git push --set-upstream origin roles-feature
-
-- Then i merged this new created github branch with main
-
-
-  ### STEP 3- CREATING LOAD BALANCER ROLES
-
-  - In the roles directory, I downloaded an NGINX role
-
-   ansible-galaxy install geerlingguy.nginx
-
-  - Then I proceeded to download an APACHE role
-
-   ansible-galaxy install geerlingguy.nginx
-
-  - Then I edited the config in roles/nginx/defaults/main.yml to add the ip adresses of the two uat-webservers
-    
-![Screenshot from 2023-10-22 19-49-59](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/737406d5-45d2-4a53-9e48-f334eb0ccce1)
-
-- Then I edited the config in roles/nginx/tasks/main.yml, uncomenting NHINX SETUP and setting become to true.
-
-![Screenshot from 2023-10-22 19-48-19](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/24ef4f9f-a568-4f68-8559-ada77507ba7b)
-
+![](./img/5.completed.png)
