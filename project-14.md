@@ -413,37 +413,37 @@ Despite that DevOps CI/CD pipeline helps with fast software delivery, it is of t
 
 ## Setting Up SonarQube
 
-On the Ansible config management pipeline, execute the ansible playbook script to install sonarqube via a preconfigured sonarqube ansible role.
+On the Ansible config management pipeline, I executed the ansible playbook script to install sonarqube via a preconfigured sonarqube ansible role.
 
 ![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/17ebaf81-8882-49b4-81f0-23b8de28fc89)
 
 
-When the pipeline is complete, access sonarqube from the browser using the `<sonarqube_server_url>:9000/sonar`
+When the pipeline was complete, I accessed sonarqube from the browser using the url `<sonarqube_server_url>:9000/sonar`
 
 ![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/4144bd01-a55b-47f9-a120-e6312aa57f7b)
 
 ![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/06a944a9-3bca-4a21-ae9e-ce7e7b3e5813)
 
 #
-## CONFIGURE SONARQUBE AND JENKINS FOR QUALITY GATE
+## CONFIGURING SONARQUBE AND JENKINS FOR QUALITY GATE
 #
-- Install SonarQube Scanner plugin
+- I installed SonarQube Scanner plugin
 
-- Navigate to configure system in Jenkins. Add SonarQube server: Manage Jenkins > Configure System
+- I then navigated to configure system in Jenkins. Added SonarQube server: Manage Jenkins > Configure System
 
-- To generate authentication token in SonarQube to to: `User > My Account > Security > Generate Tokens`
+- The, I generated authentication token in SonarQube: `User > My Account > Security > Generate Tokens`
  
 ![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/30eebfd3-9b73-4726-aa2e-30abf81455ae)
 
 
-- Configure Quality Gate Jenkins Webhook in SonarQube – The URL should point to your Jenkins server http://{JENKINS_HOST}/sonarqube-webhook/ Go to:Administration > Configuration > Webhooks > Create
+- I configured Quality Gate Jenkins Webhook in SonarQube – The URL should point to your Jenkins server http://{JENKINS_HOST}/sonarqube-webhook/ Go to:Administration > Configuration > Webhooks > Create
 
 ![image](https://github.com/AbooHamzah/darey.io-pbl/assets/108676700/93f89190-9823-4349-80a0-ace11b6acfb9)
 
 
-- Setup SonarQube scanner from Jenkins – Global Tool Configuration. Go to: Manage Jenkins > Global Tool Configuration
+- I setup SonarQube scanner from Jenkins – Global Tool Configuration. Go to: Manage Jenkins > Global Tool Configuration
 
-- Update Jenkins Pipeline to include SonarQube scanning and Quality Gate. Making sure to place it before the "package artifact stage" Below is the snippet for a Quality Gate stage in Jenkinsfile.
+- I updated Jenkins Pipeline to include SonarQube scanning and Quality Gate. Making sure to place it before the "package artifact stage" Below is the snippet for a Quality Gate stage in Jenkinsfile.
 
 ```
 stage('SonarQube Quality Gate') {
@@ -459,9 +459,9 @@ stage('SonarQube Quality Gate') {
 }
 ```
 NOTE: The above step will fail because we have not updated sonar-scanner.properties.
-- Configure sonar-scanner.properties – From the step above, Jenkins will install the scanner tool on the Linux server. You will need to go into the tools directory on the server to configure the properties file in which SonarQube will require to function during pipeline execution. `cd /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/conf/.`
-- Open sonar-scanner.properties file: `sudo vi sonar-scanner.properties` 
-- Add configuration related to php-todo project
+- Ater the fail, I configured sonar-scanner.properties – From the step above, Jenkins installed the scanner tool on the Linux server. I needed to go into the tools directory on the server to configure the properties file in which SonarQube was required to function during pipeline execution. `cd /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQubeScanner/conf/.`
+- I opened sonar-scanner.properties file: `sudo vi sonar-scanner.properties` 
+- I add configuration related to php-todo project
 
 ```
 sonar.host.url=http://<SonarQube-Server-IP-address>:9000
@@ -491,9 +491,9 @@ There is a very wide discussion around release strategy, and git branching strat
 
 Assuming a basic gitflow implementation restricts only the develop branch to deploy code to Integration environment like sit.
 
-Let us update our Jenkinsfile to implement this:
+I updated our Jenkinsfile to implement this:
 
-First, we will include a When condition to run Quality Gate whenever the running branch is either develop, hotfix, release, main, or master
+First, I included a When condition to run Quality Gate whenever the running branch is either develop, hotfix, release, main, or master
 
 ```
 stage('SonarQube Quality Gate') {
